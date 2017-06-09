@@ -1599,6 +1599,13 @@ void arch_update_cpu_capacity(int cpu)
 #endif
 
 #ifdef CONFIG_SMP
+#ifndef arch_update_cpu_capacity
+static __always_inline
+void arch_update_cpu_capacity(int cpu)
+{
+}
+#endif
+
 static inline unsigned long capacity_of(int cpu)
 {
 	return cpu_rq(cpu)->cpu_capacity;
