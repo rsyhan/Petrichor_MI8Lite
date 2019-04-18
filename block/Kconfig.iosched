@@ -34,7 +34,7 @@ config IOSCHED_DEADLINE
 
 config IOSCHED_CFQ
 	tristate "CFQ I/O scheduler"
-	default y
+	default n
 	---help---
 	  The CFQ I/O scheduler tries to distribute bandwidth equally
 	  among all processes in the system. It should provide a fair
@@ -42,6 +42,16 @@ config IOSCHED_CFQ
 	  and server systems.
 
 	  This is the default I/O scheduler.
+
+config IOSCHED_BFQ
+	tristate "BFQ I/O scheduler"
+	default y
+	---help---
+	The BFQ I/O scheduler distributes bandwidth among all
+	processes according to their weights, regardless of the
+	device parameters and with any workload. It also guarantees
+	a low latency to interactive and soft real-time applications.
+	Details in Documentation/block/bfq-iosched.txt
 
 config CFQ_GROUP_IOSCHED
 	bool "CFQ Group Scheduling support"
